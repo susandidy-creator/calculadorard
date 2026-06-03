@@ -39,7 +39,12 @@ Calcular
 <div id="tablaAmortizacion"></div>
 
 <script>
-
+function formatoRD(numero){
+    return numero.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
 function calcular(){
 
     let monto =
@@ -80,16 +85,16 @@ function calcular(){
         <h3>Resultado</h3>
 
         <p><strong>Monto:</strong>
-        RD$ ${monto.toFixed(2)}</p>
+        RD$ ${formatoRD(monto)}</p>
 
         <p><strong>Cuota mensual:</strong>
-        RD$ ${cuota.toFixed(2)}</p>
+        RD$ ${formatoRD(cuota)}</p>
 
         <p><strong>Total pagado:</strong>
-        RD$ ${totalPagado.toFixed(2)}</p>
+        RD$ ${formatoRD(totalPagado)}</p>
 
         <p><strong>Intereses:</strong>
-        RD$ ${intereses.toFixed(2)}</p>
+        RD$ ${formatoRD(intereses)}</p>
     `;
 
     let balance = monto;
@@ -121,10 +126,10 @@ for(let i = 1; i <= meses; i++){
     tabla += `
     <tr>
         <td>${i}</td>
-        <td>${cuota.toFixed(2)}</td>
-        <td>${interesMes.toFixed(2)}</td>
-        <td>${capitalMes.toFixed(2)}</td>
-        <td>${Math.max(balance,0).toFixed(2)}</td>
+        <td>${formatoRD(cuota)}</td>
+        <td>${formatoRD(interesMes)}</td>
+        <td>${formatoRD(capitalMes)}</td>
+        <td>${formatoRD(Math.max(balance,0))}</td>
     </tr>
     `;
 }
