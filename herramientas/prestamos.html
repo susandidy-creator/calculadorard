@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculadora de Préstamos</title>
+
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<h1>Calculadora de Préstamos</h1>
+
+<input
+id="monto"
+type="number"
+placeholder="Monto"
+/>
+
+<input
+id="tasa"
+type="number"
+placeholder="Tasa anual %"
+/>
+
+<input
+id="meses"
+type="number"
+placeholder="Meses"
+/>
+
+<button onclick="calcular()">
+Calcular
+</button>
+
+<h2 id="resultado"></h2>
+
+<script>
+
+function calcular(){
+
+let monto =
+Number(document.getElementById("monto").value);
+
+let tasa =
+Number(document.getElementById("tasa").value);
+
+let meses =
+Number(document.getElementById("meses").value);
+
+let interes =
+(monto * tasa / 100);
+
+let total =
+monto + interes;
+
+let cuota =
+total / meses;
+
+document.getElementById("resultado")
+.innerHTML =
+"Cuota mensual: RD$ "
++ cuota.toFixed(2);
+
+}
+
+</script>
+
+</body>
+</html>
