@@ -34,35 +34,105 @@ placeholder="Meses"
 Calcular
 </button>
 
-<h2 id="resultado"></h2>
+<div id="resultado"></div>
+
+<div id="tablaAmortizacion"></div>
 
 <script>
 
 function calcular(){
 
-let monto =
-Number(document.getElementById("monto").value);
+    let monto =
+    Number(document.getElementById("monto").value);
 
-let tasa =
-Number(document.getElementById("tasa").value);
+    let tasa =
+    Number(document.getElementById("tasa").value);
 
-let meses =
-Number(document.getElementById("meses").value);
+    let meses =
+    Number(document.getElementById("meses").value);
 
-let interes =
-(monto * tasa / 100);
+    if(monto <= 0 || tasa <= 0 || meses <= 0){
+        alert("Ingrese valores válidos");
+        return;
+    }
 
-let total =
-monto + interes;
+    let tasaMensual =
+    (tasa / 100) / 12;
 
-let cuota =
-total / meses;
+    let cuota =
+    monto *
+    (
+        tasaMensual *
+        Math.pow(1 + tasaMensual, meses)
+    )
+    /
+    (
+        Math.pow(1 + tasaMensual, meses) - 1
+    );
 
-document.getElementById("resultado")
-.innerHTML =
-"Cuota mensual: RD$ "
-+ cuota.toFixed(2);
+    let totalPagado =
+    cuota * meses;
 
+    let intereses =
+    totalPagado - monto;
+
+    document.getElementById("resultado").innerHTML = `
+        <h3>Resultado</h3>
+
+        <p><strong>Monto:</strong>
+        RD$ ${monto.toFixed(2)}</p>
+
+        <p><strong>Cuota mensual:</strong>
+        RD$ ${cuota.toFixed(2)}</p>
+
+        <p><strong>Total pagado:</strong>
+        RD$ ${totalPagado.toFixed(2)}</p>
+
+        <p><strong>Intereses:</strong>
+        RD$ ${intereses.toFixed(2)}</p>
+    `;
+
+    let balance = monto;
+
+let tabla = `
+<h3>Tabla de Amortización</h3>
+
+<table border="1" width="100%">
+<tr>
+<th>Mes</th>
+<th>Cuota</th>
+<th>Interés</th>
+<th>Capital</th>
+<th>Balance</th>
+</tr>
+`;
+
+for(let i = 1; i <= meses; i++){
+
+    let interesMes =
+    balance * tasaMensual;
+
+    let capitalMes =
+    cuota - interesMes;
+
+    balance =
+    balance - capitalMes;
+
+    tabla += `
+    <tr>
+        <td>${i}</td>
+        <td>${cuota.toFixed(2)}</td>
+        <td>${interesMes.toFixed(2)}</td>
+        <td>${capitalMes.toFixed(2)}</td>
+        <td>${Math.max(balance,0).toFixed(2)}</td>
+    </tr>
+    `;
+}
+
+tabla += "</table>";
+
+document.getElementById("tablaAmortizacion").innerHTML =
+tabla;
 }
 
 </script>
