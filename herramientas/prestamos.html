@@ -14,8 +14,9 @@
 
 <input
 id="monto"
-type="number"
+type="text"
 placeholder="Monto"
+oninput="formatearInput(this)"
 />
 
 <input
@@ -29,6 +30,14 @@ id="meses"
 type="number"
 placeholder="Meses"
 />
+
+<input
+id="monto"
+type="text"
+placeholder="Monto en RD$"
+oninput="formatearInput(this)"
+/>
+
 
 <button onclick="calcular()">
 Calcular
@@ -45,11 +54,24 @@ function formatoRD(numero){
         maximumFractionDigits: 2
     });
 }
+function formatearInput(input){
+
+    let valor =
+    input.value.replace(/,/g, "");
+
+    if(valor === "") return;
+
+    input.value =
+    Number(valor).toLocaleString("en-US");
+}
+
 function calcular(){
 
-    let monto =
-    Number(document.getElementById("monto").value);
-
+   let monto =
+Number(
+document.getElementById("monto")
+.value.replace(/,/g, "")
+);
     let tasa =
     Number(document.getElementById("tasa").value);
 
