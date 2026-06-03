@@ -147,3 +147,84 @@ button:hover{
 input{
     text-align:right;
 }
+.card{
+    background:white;
+    max-width:1000px;
+    margin:auto;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+
+#resultado{
+    background:#f8fafc;
+    padding:20px;
+    border-radius:10px;
+    margin-top:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:#0a3d78;
+    color:white;
+}
+
+th,td{
+    padding:10px;
+    border:1px solid #ddd;
+    text-align:right;
+}
+
+th:first-child,
+td:first-child{
+    text-align:center;
+}
+
+.tabla-container{
+    overflow-x:auto;
+}
+
+button{
+    background:#0a63ff;
+    color:white;
+    border:none;
+    padding:14px 30px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    opacity:.9;
+}
+#resultado{
+    background:#f8fafc;
+    padding:20px;
+    border-radius:10px;
+    margin-top:20px;
+}
+
+#resultado p{
+    margin:12px 0;
+}
+#resultado{
+    background:#f8fafc;
+    padding:20px;
+    border-radius:10px;
+    margin-top:20px;
+}
+
+#resultado p{
+    margin:12px 0;
+}
+button{
+    margin-right:10px;
+}
+button{
+    margin-right:10px;
+}

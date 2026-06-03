@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,45 +8,60 @@
 <title>Calculadora de Préstamos</title>
 
 <link rel="stylesheet" href="../css/styles.css">
+
 </head>
+
 <body>
+
+<div class="card">
 
 <h1>Calculadora de Préstamos</h1>
 
+<p class="subtitulo">
+Calcula la cuota mensual y visualiza tu tabla de amortización completa.
+</p>
+
+<label>Monto del préstamo (RD$)</label>
 <input
 id="monto"
 type="text"
 placeholder="Monto"
 oninput="formatearInput(this)"
-/>
+>
 
+<label>Tasa anual (%)</label>
 <input
 id="tasa"
 type="number"
 placeholder="Tasa anual %"
-/>
+>
 
+<label>Plazo (meses)</label>
 <input
 id="meses"
 type="number"
 placeholder="Meses"
-/>
-
-<input
-id="monto"
-type="text"
-placeholder="Monto en RD$"
-oninput="formatearInput(this)"
-/>
-
+>
 
 <button onclick="calcular()">
 Calcular
 </button>
 
+<button onclick="descargarPDF()">
+Descargar PDF
+</button>
+
+<button onclick="limpiar()">
+Limpiar
+</button>
+
 <div id="resultado"></div>
 
-<div id="tablaAmortizacion"></div>
+<div class="tabla-container">
+    <div id="tablaAmortizacion"></div>
+</div>
+
+</div>
 
 <script>
 function formatoRD(numero){
@@ -103,6 +119,9 @@ document.getElementById("monto")
     let intereses =
     totalPagado - monto;
 
+    let porcentajeInteres =
+(intereses / monto) * 100;
+
     document.getElementById("resultado").innerHTML = `
         <h3>Resultado</h3>
 
@@ -117,6 +136,9 @@ document.getElementById("monto")
 
         <p><strong>Intereses:</strong>
         RD$ ${formatoRD(intereses)}</p>
+
+        <p><strong>% en intereses:</strong>
+${formatoRD(porcentajeInteres)}%</p>
     `;
 
     let balance = monto;
@@ -160,6 +182,19 @@ tabla += "</table>";
 
 document.getElementById("tablaAmortizacion").innerHTML =
 tabla;
+}
+
+function limpiar(){
+
+    
+
+document.getElementById("monto").value="";
+document.getElementById("tasa").value="";
+document.getElementById("meses").value="";
+
+document.getElementById("resultado").innerHTML="";
+document.getElementById("tablaAmortizacion").innerHTML="";
+
 }
 
 </script>
