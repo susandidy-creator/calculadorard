@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculadora Hipotecaria RD</title>
+
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="icon" href="../img/favicon.ico">
+</head>
+<body>
+
+<div class="card">
+
+<h1>🏠 Calculadora Hipotecaria</h1>
+
+<p>Calcula la cuota mensual de un préstamo hipotecario.</p>
+
+<label>Valor de la vivienda (RD$)</label>
+<input
+id="vivienda"
+type="text"
+placeholder="Ej: 3,500,000"
+oninput="formatearInput(this)"
+>
+
+<label>Inicial (RD$)</label>
+<input
+id="inicial"
+type="text"
+placeholder="Ej: 700,000"
+oninput="formatearInput(this)"
+>
+
+<label>Tasa anual (%)</label>
+<input
+id="tasa"
+type="number"
+placeholder="Ej: 12"
+>
+
+<label>Plazo (años)</label>
+<input
+id="anos"
+type="number"
+placeholder="Ej: 20"
+>
+
+<button onclick="calcular()">
+Calcular
+</button>
+
+<div id="resultado"></div>
+
+<div class="tabla-container">
+    <div id="tablaAmortizacion"></div>
+</div>
+
+</div>
+
+<script>
+
+function formatoRD(numero){
+    return numero.toLocaleString("en-US",{
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+    });
+}
+
+function formatearInput(input){
+
+    let valor =
+    input.value.replace(/,/g,"");
+
+    if(valor === "") return;
+
+    input.value =
+    Number(valor).toLocaleString("en-US");
+}
+
+function calcular(){
+
+    let vivienda =
+    Number(
+    document.getElementById("vivienda")
+    .value.replace(/,/g,"")
+    );
+
+    let inicial =
+    Number(
+    document.getElementById("inicial")
+    .value.replace(/,/g,"")
+    );
+
+    let tasa =
+    Number(document.getElementById("tasa").value);
+
+    let anos =
+    Number(document.getElementById("anos").value);
+
+    if(
+        vivienda <= 0 ||
+        tasa <= 0 ||
+        anos <= 0
+    ){
+        alert("Ingrese valores válidos");
+        return;
+    }
+
+    let monto =
+    vivienda - inicial;
+
+    let meses =
+    anos * 12;
+
+    let tasaMensual =
+    (tasa / 100) / 12;
+
+    let cuota =
+    monto *
+    (
+        tasaMensual *
+        Math.pow(1 + tasaMensual, meses)
+    )
+    /
+    (
+        Math.pow(1 + tasaMensual, meses) - 1
+    );
+
+    let totalPagado =
+    cuota * meses;
+
+    let intereses =
+    totalPagado - monto;
+
+    document.getElementById("resultado").innerHTML = `
+
+    <h3>Resultado</h3>
+
+    <p><strong>Valor vivienda:</strong>
+    RD$ ${formatoRD(vivienda)}</p>
+
+    <p><strong>Inicial:</strong>
+    RD$ ${formatoRD(inicial)}</p>
+
+    <p><strong>Monto financiado:</strong>
+    RD$ ${formatoRD(monto)}</p>
+
+    <p><strong>Cuota mensual:</strong>
+    RD$ ${formatoRD(cuota)}</p>
+
+    <p><strong>Total pagado:</strong>
+    RD$ ${formatoRD(totalPagado)}</p>
+
+    <p><strong>Intereses:</strong>
+    RD$ ${formatoRD(intereses)}</p>
+
+    `;
+
+    let balance = monto;
+
+    let tabla = `
+
+    <h3>Tabla de Amortización</h3>
+
+    <table>
+
+    <tr>
+        <th>Mes</th>
+        <th>Cuota</th>
+        <th>Interés</th>
+        <th>Capital</th>
+        <th>Balance</th>
+    </tr>
+
+    `;
+
+    for(let i=1; i<=meses && i<=120; i++){
+
+        let interesMes =
+        balance * tasaMensual;
+
+        let capitalMes =
+        cuota - interesMes;
+
+        balance =
+        balance - capitalMes;
+
+        tabla += `
+        <tr>
+            <td>${i}</td>
+            <td>${formatoRD(cuota)}</td>
+            <td>${formatoRD(interesMes)}</td>
+            <td>${formatoRD(capitalMes)}</td>
+            <td>${formatoRD(Math.max(balance,0))}</td>
+        </tr>
+        `;
+    }
+
+    tabla += "</table>";
+
+    document.getElementById("tablaAmortizacion").innerHTML =
+    tabla;
+}
+
+</script>
+
+</body>
+</html>
