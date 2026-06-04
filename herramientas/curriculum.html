@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Generador de Currículum Vitae RD</title>
+
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="icon" href="../img/favicon.ico">
+
+</head>
+<body>
+
+<div class="card">
+
+<h1>📄 Generador de Currículum Vitae</h1>
+
+<p>
+Complete los datos para generar su currículum.
+</p>
+
+<label>Nombre completo</label>
+<input type="text" id="nombre">
+
+<label>Teléfono</label>
+<input type="text" id="telefono">
+
+<label>Correo electrónico</label>
+<input type="email" id="correo">
+
+<label>Perfil Profesional</label>
+<textarea id="perfil"></textarea>
+
+<label>Experiencia Laboral</label>
+<textarea id="experiencia"></textarea>
+
+<label>Educación</label>
+<textarea id="educacion"></textarea>
+
+<label>Habilidades</label>
+<textarea id="habilidades"></textarea>
+
+<br><br>
+
+<button onclick="generarCV()">
+Generar Currículum
+</button>
+
+<div id="resultado"></div>
+
+</div>
+
+<script>
+
+function generarCV(){
+
+let nombre =
+document.getElementById("nombre").value;
+
+let telefono =
+document.getElementById("telefono").value;
+
+let correo =
+document.getElementById("correo").value;
+
+let perfil =
+document.getElementById("perfil").value;
+
+let experiencia =
+document.getElementById("experiencia").value;
+
+let educacion =
+document.getElementById("educacion").value;
+
+let habilidades =
+document.getElementById("habilidades").value;
+
+document.getElementById("resultado").innerHTML = `
+
+<h2>${nombre}</h2>
+
+<p><strong>Teléfono:</strong> ${telefono}</p>
+<p><strong>Correo:</strong> ${correo}</p>
+
+<h3>Perfil Profesional</h3>
+<p>${perfil}</p>
+
+<h3>Experiencia Laboral</h3>
+<p>${experiencia}</p>
+
+<h3>Educación</h3>
+<p>${educacion}</p>
+
+<h3>Habilidades</h3>
+<p>${habilidades}</p>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
