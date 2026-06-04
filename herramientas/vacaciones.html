@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculadora de Vacaciones RD</title>
+
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="icon" href="../img/favicon.ico">
+</head>
+<body>
+
+<div class="card">
+
+<h1>🏖️ Calculadora de Vacaciones RD</h1>
+
+<label>Salario mensual (RD$)</label>
+<input
+id="salario"
+type="text"
+placeholder="Ej: 35,000"
+oninput="formatearInput(this)"
+>
+
+<label>Días de vacaciones</label>
+<select id="dias">
+    <option value="14">14 días</option>
+    <option value="18">18 días</option>
+</select>
+
+<button onclick="calcular()">
+Calcular
+</button>
+
+<div id="resultado"></div>
+
+</div>
+
+<script>
+
+function formatoRD(numero){
+    return numero.toLocaleString("en-US",{
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+    });
+}
+
+function formatearInput(input){
+
+    let valor =
+    input.value.replace(/,/g,"");
+
+    if(valor === "") return;
+
+    input.value =
+    Number(valor).toLocaleString("en-US");
+}
+
+function calcular(){
+
+    let salario =
+    Number(
+    document.getElementById("salario")
+    .value.replace(/,/g,"")
+    );
+
+    let dias =
+    Number(
+    document.getElementById("dias").value
+    );
+
+    if(salario <= 0){
+        alert("Ingrese un salario válido");
+        return;
+    }
+
+    let salarioDiario =
+    salario / 23.83;
+
+    let vacaciones =
+    salarioDiario * dias;
+
+    document.getElementById("resultado").innerHTML = `
+        <h3>Resultado</h3>
+
+        <p><strong>Salario mensual:</strong>
+        RD$ ${formatoRD(salario)}</p>
+
+        <p><strong>Días de vacaciones:</strong>
+        ${dias}</p>
+
+        <p><strong>Pago estimado:</strong>
+        RD$ ${formatoRD(vacaciones)}</p>
+    `;
+}
+
+</script>
+
+</body>
+</html>
