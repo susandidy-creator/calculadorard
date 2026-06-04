@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Horas Extras RD</title>
+
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<div class="card">
+
+<h1>⏰ Calculadora de Horas Extras RD</h1>
+
+<p class="subtitulo">
+Calcula el pago de horas extras según tu salario mensual.
+</p>
+
+<label>Salario mensual (RD$)</label>
+<input id="salario" type="number" placeholder="Ej: 30000">
+
+<label>Horas extras diurnas</label>
+<input id="extras" type="number" placeholder="Ej: 10">
+
+<button onclick="calcular()">
+Calcular
+</button>
+
+<button onclick="limpiar()">
+Limpiar
+</button>
+
+<div id="resultado"></div>
+
+</div>
+
+<script>
+
+function formatoRD(numero){
+    return numero.toLocaleString("en-US",{
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+    });
+}
+
+function calcular(){
+
+    let salario =
+    Number(document.getElementById("salario").value);
+
+    let extras =
+    Number(document.getElementById("extras").value);
+
+    if(salario <= 0 || extras < 0){
+        alert("Ingrese valores válidos");
+        return;
+    }
+
+    let valorHora =
+    salario / 23.83 / 8;
+
+    let valorExtra =
+    valorHora * 1.35;
+
+    let pagoExtras =
+    valorExtra * extras;
+
+    document.getElementById("resultado").innerHTML = `
+    <h3>Resultado</h3>
+
+    <p><strong>Valor por hora:</strong>
+    RD$ ${formatoRD(valorHora)}</p>
+
+    <p><strong>Valor hora extra:</strong>
+    RD$ ${formatoRD(valorExtra)}</p>
+
+    <p><strong>Pago por horas extras:</strong>
+    RD$ ${formatoRD(pagoExtras)}</p>
+    `;
+}
+
+function limpiar(){
+
+    document.getElementById("salario").value="";
+    document.getElementById("extras").value="";
+    document.getElementById("resultado").innerHTML="";
+}
+
+</script>
+
+</body>
+</html>
