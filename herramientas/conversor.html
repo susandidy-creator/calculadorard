@@ -7,6 +7,7 @@
 <title>Conversor USD ↔ DOP</title>
 
 <link rel="stylesheet" href="../css/styles.css">
+<link rel="icon" href="../img/favicon.ico">
 
 </head>
 <body>
@@ -22,8 +23,9 @@ Convierte dólares estadounidenses a pesos dominicanos y viceversa.
 <label>Monto</label>
 <input
 id="monto"
-type="number"
+type="text"
 placeholder="Ingrese el monto"
+oninput="formatearInput(this)"
 >
 
 <label>Tasa de cambio</label>
@@ -56,6 +58,17 @@ Limpiar
 
 <script>
 
+function formatearInput(input){
+
+    let valor =
+    input.value.replace(/,/g,"");
+
+    if(valor === "") return;
+
+    input.value =
+    Number(valor).toLocaleString("en-US");
+}
+
 function formatoRD(numero){
     return numero.toLocaleString("en-US",{
         minimumFractionDigits:2,
@@ -66,7 +79,10 @@ function formatoRD(numero){
 function convertir(){
 
     let monto =
-    Number(document.getElementById("monto").value);
+Number(
+document.getElementById("monto")
+.value.replace(/,/g,"")
+);
 
     let tasa =
     Number(document.getElementById("tasa").value);
@@ -84,33 +100,42 @@ function convertir(){
     if(tipo === "usd-dop"){
         resultado = monto * tasa;
 
-        document.getElementById("resultado").innerHTML = `
-        <h3>Resultado</h3>
-        <p>
-        US$ ${formatoRD(monto)}
-        =
-        RD$ ${formatoRD(resultado)}
-        </p>
-        `;
+      document.getElementById("resultado").innerHTML = `
+<h3>Resultado</h3>
+
+<p><strong>Monto USD:</strong>
+US$ ${formatoRD(monto)}</p>
+
+<p><strong>Tasa:</strong>
+RD$ ${formatoRD(tasa)}</p>
+
+<p><strong>Resultado:</strong>
+RD$ ${formatoRD(resultado)}</p>
+`;
     }else{
 
         resultado = monto / tasa;
 
-        document.getElementById("resultado").innerHTML = `
-        <h3>Resultado</h3>
-        <p>
-        RD$ ${formatoRD(monto)}
-        =
-        US$ ${formatoRD(resultado)}
-        </p>
-        `;
+      document.getElementById("resultado").innerHTML = `
+<h3>Resultado</h3>
+
+<p><strong>Monto DOP:</strong>
+RD$ ${formatoRD(monto)}</p>
+
+<p><strong>Tasa:</strong>
+RD$ ${formatoRD(tasa)}</p>
+
+<p><strong>Resultado:</strong>
+US$ ${formatoRD(resultado)}</p>
+`;
     }
 }
 
 function limpiar(){
 
-    document.getElementById("monto").value="";
-    document.getElementById("resultado").innerHTML="";
+    document.getElementById("monto").value = "";
+    document.getElementById("tasa").value = 59;
+    document.getElementById("resultado").innerHTML = "";
 }
 
 </script>
