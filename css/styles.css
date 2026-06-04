@@ -220,3 +220,78 @@ textarea{
     padding:20px;
     border-radius:10px;
 }
+@media print {
+
+    body{
+        background:white;
+    }
+
+    input,
+    textarea,
+    button,
+    label,
+    .subtitulo,
+    h1{
+        display:none;
+    }
+
+    #resultado{
+        box-shadow:none;
+        border:none;
+        margin:0;
+        padding:0;
+    }
+
+}
+.cv{
+    background:white;
+    padding:40px;
+}
+
+.cv h1{
+    color:#003366;
+    margin-bottom:10px;
+}
+
+.cv h2{
+    margin-top:25px;
+    color:#003366;
+}
+
+.cv hr{
+    margin:20px 0;
+}
+
+.cv{
+    background:white;
+    padding:40px;
+}
+
+.cv-header{
+    display:flex;
+    gap:20px;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.cv-foto img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #003366;
+}
+
+.cv-info h1{
+    color:#003366;
+    margin-bottom:10px;
+}
+
+.cv h2{
+    margin-top:25px;
+    color:#003366;
+}
+
+.cv hr{
+    margin:20px 0;
+}

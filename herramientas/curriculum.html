@@ -20,6 +20,9 @@
 Complete los datos para generar su currículum.
 </p>
 
+<label>Foto de Perfil</label>
+<input type="file" id="foto" accept="image/*">
+
 <label>Nombre completo</label>
 <input type="text" id="nombre">
 
@@ -47,6 +50,10 @@ Complete los datos para generar su currículum.
 Generar Currículum
 </button>
 
+<button onclick="imprimirCV()">
+🖨️ Descargar PDF
+</button>
+
 <div id="resultado"></div>
 
 </div>
@@ -54,6 +61,36 @@ Generar Currículum
 <script>
 
 function generarCV(){
+
+    const fotoInput =
+document.getElementById("foto");
+
+fotoInput.addEventListener("change", function(){
+
+    const archivo = this.files[0];
+
+    if(!archivo) return;
+
+    const lector = new FileReader();
+
+    lector.onload = function(e){
+
+        const imagen =
+        document.getElementById("previewFoto");
+
+        if(imagen){
+            imagen.src = e.target.result;
+        }
+
+    };
+
+    lector.readAsDataURL(archivo);
+
+});
+
+    function imprimirCV(){
+    window.print();
+}
 
 let nombre =
 document.getElementById("nombre").value;
@@ -78,22 +115,39 @@ document.getElementById("habilidades").value;
 
 document.getElementById("resultado").innerHTML = `
 
-<h2>${nombre}</h2>
+<div class="cv">
 
-<p><strong>Teléfono:</strong> ${telefono}</p>
-<p><strong>Correo:</strong> ${correo}</p>
+<div class="cv-header">
 
-<h3>Perfil Profesional</h3>
+<div class="cv-foto">
+    <img id="previewFoto">
+</div>
+
+<div class="cv-info">
+    <h1>${nombre}</h1>
+
+    <p>📞 ${telefono}</p>
+
+    <p>✉️ ${correo}</p>
+</div>
+
+</div>
+
+<hr>
+
+<h2>Perfil Profesional</h2>
 <p>${perfil}</p>
 
-<h3>Experiencia Laboral</h3>
-<p>${experiencia}</p>
+<h2>Experiencia Laboral</h2>
+<p>${experiencia.replace(/\n/g,"<br>")}</p>
 
-<h3>Educación</h3>
-<p>${educacion}</p>
+<h2>Educación</h2>
+<p>${educacion.replace(/\n/g,"<br>")}</p>
 
-<h3>Habilidades</h3>
-<p>${habilidades}</p>
+<h2>Habilidades</h2>
+<p>${habilidades.replace(/\n/g,"<br>")}</p>
+
+</div>
 
 `;
 
