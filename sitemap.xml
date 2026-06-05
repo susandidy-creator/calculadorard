@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://susandidy-creator.github.io/calculadorard/</loc>
-  </url>
 
-  <url>
-    <loc>https://susandidy-creator.github.io/calculadorard/herramientas.html</loc>
-  </url>
-
-  <url>
-    <loc>https://susandidy-creator.github.io/calculadorard/blog.html</loc>
-  </url>
 
   <url>
     <loc>https://susandidy-creator.github.io/calculadorard/contacto.html</loc>
@@ -55,9 +45,6 @@
     <loc>https://susandidy-creator.github.io/calculadorard/herramientas/conversor.html</loc>
   </url>
 
-<url>
-  <loc>https://susandidy-creator.github.io/calculadorard/herramientas/conversor.html</loc>
-</url>
 
   <url>
     <loc>https://susandidy-creator.github.io/calculadorard/blog/como-calcular-itbis-rd.html</loc>
