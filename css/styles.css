@@ -295,3 +295,41 @@ textarea{
 .cv hr{
     margin:20px 0;
 }
+header h1{
+    font-size:32px;
+    margin:0;
+}
+
+.logo{
+    height:60px;
+    width:auto;
+}
+
+header h1{
+    margin-bottom: 15px;
+}
+header{
+    background:#003366;
+    color:white;
+    padding:20px 30px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+header h1{
+    margin-bottom:20px;
+}
+section{
+    padding: 50px 40px;
+}
+section{
+    max-width:1200px;
+    margin:auto;
+}
+section{
+    padding:40px 20px;
+}
+section p{
+    max-width:900px;
+}
