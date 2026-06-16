@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://susandidy-creator.github.io/calculadorard/sitemap.txt
+Sitemap: https://susandidy-creator.github.io/calculadorard/sitemap.xml
