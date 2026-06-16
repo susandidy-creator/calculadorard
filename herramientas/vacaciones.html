@@ -11,7 +11,7 @@
 <meta name="keywords" content="vacaciones RD, pago vacaciones República Dominicana, calculadora vacaciones, vacaciones laborales">
 
 <link rel="canonical" href="https://susandidy-creator.github.io/calculadorard/herramientas/vacaciones.html">
-
+<meta name="robots" content="index,follow">
 <meta property="og:title" content="Calculadora de Vacaciones RD">
 <meta property="og:description" content="Calcula el pago de vacaciones laborales en República Dominicana.">
 <meta property="og:type" content="website">
@@ -29,7 +29,7 @@
   gtag('config', 'G-6B5LXKTVTS');
 </script>
 
-<meta name="description" content="Calcula tus vacaciones laborales en República Dominicana de forma rápida y sencilla.">
+
 
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="icon" href="../img/favicon.ico">
@@ -58,6 +58,10 @@ oninput="formatearInput(this)"
 Calcular
 </button>
 
+<button onclick="limpiar()">
+Limpiar
+</button>
+
 <div id="resultado"></div>
 
 <section>
@@ -74,6 +78,43 @@ El monto a recibir depende del salario y de los días de vacaciones que correspo
 
 <p>
 Con esta calculadora puedes estimar fácilmente cuánto te corresponde por concepto de vacaciones laborales.
+</p>
+
+<h2>Preguntas Frecuentes</h2>
+
+<h3>¿Cuántos días de vacaciones corresponden?</h3>
+<p>
+Generalmente 14 días laborables después de un año de trabajo y 18 días después de cinco años de servicio continuo.
+</p>
+
+<h3>¿Cómo se calcula el pago de vacaciones?</h3>
+<p>
+Se toma el salario diario promedio y se multiplica por la cantidad de días de vacaciones correspondientes.
+</p>
+
+<h3>¿Esta calculadora es oficial?</h3>
+<p>
+No. Es una herramienta informativa para estimaciones y los resultados pueden variar según cada caso laboral.
+</p>
+
+<h2>Herramientas relacionadas</h2>
+
+<p>
+<a href="prestaciones.html">
+Calculadora de Prestaciones Laborales
+</a>
+</p>
+
+<p>
+<a href="salario.html">
+Calculadora de Salario Neto
+</a>
+</p>
+
+<p>
+<a href="horas-extras.html">
+Calculadora de Horas Extras
+</a>
 </p>
 
 </section>
@@ -137,6 +178,13 @@ function calcular(){
         <p><strong>Pago estimado:</strong>
         RD$ ${formatoRD(vacaciones)}</p>
     `;
+}
+
+function limpiar(){
+
+    document.getElementById("salario").value = "";
+    document.getElementById("dias").value = "14";
+    document.getElementById("resultado").innerHTML = "";
 }
 
 </script>

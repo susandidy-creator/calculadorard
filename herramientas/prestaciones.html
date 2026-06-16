@@ -7,11 +7,12 @@
 <title>Calculadora de Prestaciones Laborales RD</title>
 
 
-<meta name="description" content="Calcula prestaciones laborales, cesantía y preaviso en República Dominicana de forma rápida y gratuita.">
+<meta name="description" content="Calcula prestaciones laborales, cesantía, preaviso y vacaciones en República Dominicana. Herramienta gratuita y fácil de usar.">
 <meta name="keywords" content="prestaciones laborales RD, liquidación laboral, cesantía, preaviso, vacaciones, calculadora prestaciones República Dominicana">
-
+<link rel="icon" href="../img/favicon.ico">
 <link rel="canonical" href="https://susandidy-creator.github.io/calculadorard/herramientas/prestaciones.html">
 
+<meta name="robots" content="index, follow">
 <meta property="og:title" content="Calculadora de Prestaciones Laborales RD">
 <meta property="og:description" content="Calcula preaviso, cesantía y prestaciones laborales en República Dominicana.">
 <meta property="og:type" content="website">
@@ -29,7 +30,7 @@
   gtag('config', 'G-6B5LXKTVTS');
 </script>
 
-<meta name="description" content="Calcula tus prestaciones laborales en República Dominicana según tiempo trabajado y salario.">
+
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="icon" href="../img/favicon.ico">
 </head>
@@ -85,8 +86,25 @@ Entre los conceptos más comunes se encuentran el preaviso, la cesantía, las va
 Esta calculadora permite estimar estos valores utilizando el salario y el tiempo trabajado como referencia.
 </p>
 
+<h2>Herramientas relacionadas</h2>
+
+<p>
+<a href="salario.html">Calculadora de Salario Neto</a>
+</p>
+
+<p>
+<a href="vacaciones.html">Calculadora de Vacaciones RD</a>
+</p>
+
+<p>
+<a href="isr.html">Calculadora ISR</a>
+</p>
+
 </section>
 
+<p>
+<strong>Nota:</strong> Esta calculadora ofrece una estimación aproximada y no sustituye un cálculo oficial.
+</p>
 
     </div>
 
@@ -119,6 +137,7 @@ function calcularPrestaciones(){
     let total =
         cesantia + preaviso + vacaciones;
 
+
     document.getElementById("resultado").innerHTML = `
         <hr>
 
@@ -135,6 +154,8 @@ function calcularPrestaciones(){
 }
 
 </script>
+
+
 
 </body>
 </html>

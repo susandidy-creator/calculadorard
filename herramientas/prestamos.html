@@ -10,7 +10,7 @@
 
 <meta name="description" content="Calcula cuotas, intereses y pagos mensuales de préstamos en República Dominicana con nuestra calculadora gratuita.">
 <meta name="keywords" content="calculadora préstamos RD, préstamo personal República Dominicana, cuota préstamo, intereses préstamo, financiamiento RD">
-
+<meta name="robots" content="index, follow">
 <meta name="author" content="CalculadoraRD">
 
 <link rel="canonical" href="https://susandidy-creator.github.io/calculadorard/herramientas/prestamos.html">
@@ -32,7 +32,7 @@
   gtag('config', 'G-6B5LXKTVTS');
 </script>
 
-<meta name="description" content="Calcula cuotas mensuales, intereses y pagos totales de préstamos personales en República Dominicana.">
+
 
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="icon" href="../img/favicon.ico">
@@ -42,7 +42,7 @@
 
 <div class="card">
 
-<h1>Calculadora de Préstamos</h1>
+<h1>Calculadora de Préstamos RD</h1>
 
 <p class="subtitulo">
 Calcula la cuota mensual y visualiza tu tabla de amortización completa.
@@ -74,10 +74,6 @@ placeholder="Meses"
 Calcular
 </button>
 
-<button onclick="descargarPDF()">
-Descargar PDF
-</button>
-
 <button onclick="limpiar()">
 Limpiar
 </button>
@@ -98,6 +94,34 @@ Con esta calculadora puedes estimar el valor de la cuota mensual, el total pagad
 
 <p>
 Esta herramienta es útil para préstamos personales, préstamos comerciales y otros tipos de financiamiento utilizados en República Dominicana.
+</p>
+
+<h2>Herramientas relacionadas</h2>
+
+<p>
+<a href="hipotecaria.html">
+Calculadora Hipotecaria
+</a>
+</p>
+
+<p>
+<a href="usd-dop.html">
+Conversor USD a DOP
+</a>
+</p>
+
+<p>
+<a href="itbis.html">
+Calculadora de ITBIS
+</a>
+</p>
+
+<h2>Aprende más sobre préstamos</h2>
+
+<p>
+<a href="../blog/como-calcular-prestamo-rd.html">
+Cómo calcular un préstamo en República Dominicana
+</a>
 </p>
 
 </section>
@@ -202,7 +226,7 @@ let tabla = `
 </tr>
 `;
 
-for(let i = 1; i <= meses; i++){
+for(let i = 1; i <= meses && i <= 120; i++){
 
     let interesMes =
     balance * tasaMensual;
@@ -243,7 +267,34 @@ document.getElementById("tablaAmortizacion").innerHTML="";
 
 }
 
+function descargarPDF(){
+    window.print();
+}
+
 </script>
+
+<div>
+
+<h2>Preguntas frecuentes</h2>
+
+<h3>¿Cómo se calcula la cuota de un préstamo?</h3>
+<p>
+La cuota depende del monto solicitado, la tasa de interés y el plazo.
+</p>
+
+<h3>¿Qué pasa si aumento el plazo?</h3>
+<p>
+La cuota mensual disminuye, pero normalmente aumentan los intereses totales.
+</p>
+
+<h3>¿Esta calculadora sirve para préstamos personales?</h3>
+<p>
+Sí, sirve para estimar préstamos personales, comerciales y otros financiamientos.
+</p>
+
+</div>
+
+
 
 </body>
 </html>
